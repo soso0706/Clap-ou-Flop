@@ -1,1 +1,29 @@
-<p>movies-list works!</p>
+<div class="container mt-4">
+
+  <h1 class="mb-4">Gestion des films</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Date</th>
+        <th>Réalisateur</th>
+        <th>Note</th>
+        <th>Synopsis</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let movie of movies$ | async">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.releaseDate | date:'dd/MM/yy' }}</td>
+        <td>{{ movie.director }}</td>
+        <td>{{ movie.rate }}</td>
+        <td>{{ movie.synopsis }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
