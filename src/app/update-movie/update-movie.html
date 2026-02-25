@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Modifier le film</h1>
+
+  <div class="d-flex flex-column w-50 mb-3">
+    <label for="title">Titre</label>
+    <input type="text" id="title" [(ngModel)]="movie.title" class="form-control"/>
+  </div>
+
+  <div class="d-flex flex-column w-50 mb-3">
+    <label for="director">Réalisateur</label>
+    <input type="text" id="director" [(ngModel)]="movie.director" class="form-control"/>
+  </div>
+
+  <div class="d-flex flex-column w-50 mb-3">
+    <label class="me-2" for="releaseDate">Date de sortie</label>
+    <input
+      type="date"
+      id="releaseDate"
+      name="releaseDate"
+      [value]="movie.releaseDate | date:'yyyy-MM-dd'"
+      (change)="movie.releaseDate = $any($event.target).value"/>
+  </div>
+
+  <div class="d-flex flex-column w-50 mb-3">
+    <label for="synopsis">Synopsis</label>
+    <textarea id="synopsis" rows="5" [(ngModel)]="movie.synopsis" class="form-control"></textarea>
+  </div>
+
+  <div class="d-flex gap-2 mt-3">
+    <button class="btn btn-warning" (click)="save()">Mettre à jour</button>
+    <button class="btn btn-secondary" (click)="cancel()">Annuler</button>
+  </div>
+</div>

@@ -34,8 +34,8 @@ export class MoviesList {
     );
 }
 
- editMovie(id: number): void {
-    this.router.navigate(['/add-movie', id]);
+ updateMovie(id: number): void {
+    this.router.navigate(['/update-movie', id]);
   }
 
 

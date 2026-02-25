@@ -23,6 +23,12 @@ deleteMovie(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.url}/${id}`);
 }
 
+getMovieById(id: number): Observable<Movie> {
+  return this.httpClient.get<Movie>(`${this.url}/${id}`);
+}
 
+updateMovie(movie: Movie): Observable<Movie> {
+  return this.httpClient.put<Movie>(`${this.url}/${movie.id}`, movie);
+}
 
 }
