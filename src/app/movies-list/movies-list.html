@@ -11,18 +11,40 @@
         <th>Réalisateur</th>
         <th>Note</th>
         <th>Synopsis</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let movie of movies$ | async">
+      @for(movie of movies; track movie.id) {
+      <tr>
         <td>{{ movie.id }}</td>
         <td>{{ movie.title }}</td>
         <td>{{ movie.releaseDate | date:'dd/MM/yy' }}</td>
         <td>{{ movie.director }}</td>
         <td>{{ movie.rate }}</td>
         <td>{{ movie.synopsis }}</td>
+        <td class="text-center">
+  <div class="d-flex justify-content-center gap-2">
+    
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm action-btn"
+      (click)="editMovie(movie.id!)">
+      <i class="bi bi-pencil-fill"></i>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-sm action-btn"
+      (click)="deleteMovie(movie.id!)">
+      <i class="bi bi-trash-fill"></i>
+    </button>
+
+  </div>
+</td>
       </tr>
+    }
     </tbody>
   </table>
 

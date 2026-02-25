@@ -1,9 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { MoviesApi } from '../services/movies-api';
 import { Movie } from '../models/movie';
 import { Observable } from 'rxjs';
 import { DatePipe, AsyncPipe, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-movies-list',
@@ -15,7 +19,24 @@ import { RouterLink } from '@angular/router';
 export class MoviesList {
 
   private readonly moviesApi = inject(MoviesApi);
+  private readonly router = inject(Router);
 
-  movies$: Observable<Movie[]> = this.moviesApi.getMovies();
+  movies: Movie[] = [];
+  ngOnInit(): void {
+    this.moviesApi.getMovies().subscribe(movies => this.movies = movies);
+}
+
+
+  private destroyRef = inject(DestroyRef)    
+  deleteMovie(id: number): void {
+    this.moviesApi.deleteMovie(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => 
+        this.movies = this.movies.filter(film => film.id !== id)
+    );
+}
+
+ editMovie(id: number): void {
+    this.router.navigate(['/add-movie', id]);
+  }
+
 
 }

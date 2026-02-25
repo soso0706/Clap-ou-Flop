@@ -19,5 +19,10 @@ export class MoviesApi {
     return this.httpClient.post<Movie>(this.url, movie);
 }
 
+deleteMovie(id: number): Observable<void> { 
+    return this.httpClient.delete<void>(`${this.url}/${id}`);
+}
+
+
 
 }
