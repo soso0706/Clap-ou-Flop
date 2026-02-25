@@ -3,11 +3,12 @@ import { MoviesApi } from '../services/movies-api';
 import { Movie } from '../models/movie';
 import { Observable } from 'rxjs';
 import { DatePipe, AsyncPipe, NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [NgFor, DatePipe, AsyncPipe],
+  imports: [NgFor, DatePipe, AsyncPipe, RouterLink],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.scss',
 })

@@ -15,4 +15,9 @@ export class MoviesApi {
     return this.httpClient.get<Movie[]>(this.url);
   }
 
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.httpClient.post<Movie>(this.url, movie);
+}
+
+
 }
