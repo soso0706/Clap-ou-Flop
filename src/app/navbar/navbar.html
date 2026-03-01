@@ -1,6 +1,21 @@
-<nav class="navbar navbar-light navbar-expand bg-light ps-5">
-  <a class="navbar-brand">{{ title | titlecase }}</a>
+
+<nav class="navbar navbar-light navbar-expand app-navbar ps-5">
+  <img src="Fond.png" alt="Fond" class="navbar-logo" />
+
   <a class="nav-item nav-link" routerLink="/">Accueil</a>
   <a class="nav-item nav-link ms-3" routerLink="/movies">Gestion de films</a>
-</nav>
 
+  <div class="account-container ms-auto me-3">
+    <button 
+      type="button" 
+      class="btn btn-account"
+      (click)="toggleMenu()">
+      Mon Compte
+    </button>
+
+    <div class="account-dropdown" *ngIf="isOpen">
+      <a routerLink="/auth/regis" (click)="closeMenu()">Inscription</a>
+      <a routerLink="/auth/login" (click)="closeMenu()">Connexion</a>
+    </div>
+  </div>
+</nav>
