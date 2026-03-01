@@ -1,0 +1,55 @@
+<div class="page" *ngIf="!loading; else loadingTpl">
+  <div class="topbar">
+    <button class="btn btn-light" (click)="goBack()">← Retour</button>
+
+    <div class="actions">
+      <button class="btn btn-outline-primary" (click)="edit()">
+        <i class="bi bi-pencil-fill"></i> Modifier
+      </button>
+      <button class="btn btn-outline-danger" (click)="delete()">
+        <i class="bi bi-trash-fill"></i> Supprimer
+      </button>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="movie as m">
+    <div class="layout">
+      <div class="poster">
+        <img
+          [src]="imageUrl"
+          [alt]="m.title"
+        />
+      </div>
+
+      <div class="content">
+        <div class="headline">
+          <h1 class="title">{{ m.title }}</h1>
+          <span class="badge rating">{{ m.rate ?? '—' }}</span>
+        </div>
+
+        <div class="meta">
+          <div class="meta-item">
+            <span class="label">Date</span>
+            <span class="value">{{ m.releaseDate | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Réalisateur</span>
+            <span class="value">{{ m.director }}</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Synopsis</h2>
+          <p class="synopsis">{{ m.synopsis }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">
+    <div class="spinner-border" role="status"></div>
+    <p>Chargement du film…</p>
+  </div>
+</ng-template>
