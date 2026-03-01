@@ -15,6 +15,10 @@ export class MoviesApi {
     return this.httpClient.get<Movie[]>(this.url);
   }
 
+  getMovie(id: number) {
+  return this.httpClient.get<Movie>(`http://localhost:8080/movies/${id}`);
+}
+
   addMovie(movie: Movie): Observable<Movie> {
     return this.httpClient.post<Movie>(this.url, movie);
 }

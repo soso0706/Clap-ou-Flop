@@ -1,7 +1,8 @@
-<div class="card shadow m-4" style="width: 18rem; min-height: 55rem">
+<div class="card shadow m-4 movie-card" style="width: 18rem; min-height: 55rem" [routerLink]="['/movies', movie.id]">
   @if(movie.image) {
     <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top" alt="">
   }
+
   <div class="card-body">
     <h5 class="card-title">{{movie.title}}</h5>
     <p class="card-text">{{movie.synopsis}}</p>

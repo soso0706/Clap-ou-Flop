@@ -4,6 +4,7 @@ import { MoviesApi } from '../services/movies-api';
 import { Movie } from '../models/movie';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class UpdateMovie {
   private readonly moviesApi = inject(MoviesApi);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly location = inject(Location);
 
   movie: Movie = {
     title: '',
@@ -39,11 +41,11 @@ export class UpdateMovie {
 
   save(): void {
     this.moviesApi.updateMovie(this.movie).subscribe(() => {
-      this.router.navigate(['/movies']);
+      this.location.back();
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/movies']);
+    this.location.back();
   }
 }
