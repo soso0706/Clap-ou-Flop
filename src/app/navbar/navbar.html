@@ -1,13 +1,45 @@
-
 <nav class="navbar navbar-light navbar-expand app-navbar ps-5">
   <img src="Fond.png" alt="Fond" class="navbar-logo" />
 
   <a class="nav-item nav-link" routerLink="/">Accueil</a>
   <a class="nav-item nav-link ms-3" routerLink="/movies">Gestion de films</a>
 
-  <div class="account-container ms-auto me-3">
-    <button 
-      type="button" 
+  <!-- 🔎 Search à droite -->
+  <div class="search-wrap ms-auto me-3">
+    <div class="position-relative">
+      <input
+        class="form-control search-input"
+        type="search"
+        placeholder="Rechercher un film..."
+        [formControl]="searchCtrl"
+        (focus)="onFocusSearch()"
+        autocomplete="off"
+      />
+
+      <div
+        class="suggestions shadow"
+        *ngIf="showSuggestions && (filteredMovies$ | async) as results"
+      >
+        <button
+          type="button"
+          class="suggestion-item"
+          *ngFor="let movie of results"
+          (click)="selectMovie(movie)"
+        >
+          <div class="title">{{ movie.title }}</div>
+          <div class="meta">{{ movie.director }}</div>
+        </button>
+
+        <div class="no-result" *ngIf="results.length === 0 && searchCtrl.value.trim().length">
+          Aucun résultat
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="account-container me-3">
+    <button
+      type="button"
       class="btn btn-account"
       (click)="toggleMenu()">
       Mon Compte

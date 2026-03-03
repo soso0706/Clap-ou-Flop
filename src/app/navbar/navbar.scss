@@ -99,4 +99,51 @@ $navbar-text: #ddfafe;
     transform: translateY(0);
   }
 }
+.search-wrap {
+  width: 360px; // ajuste
+}
+
+.search-input {
+  border-radius: 999px;
+  padding-left: 14px;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;              // ✅ aligné à droite du champ
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.suggestion-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.meta {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.no-result {
+  padding: 10px 12px;
+  opacity: 0.7;
+}
 
