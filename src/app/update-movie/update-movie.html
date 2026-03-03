@@ -1,33 +1,67 @@
-<div class="container mt-4">
-  <h1 class="mb-4">Modifier le film</h1>
+<div class="update-movie-container">
+  <div class="card shadow p-4">
 
-  <div class="d-flex flex-column w-50 mb-3">
-    <label for="title">Titre</label>
-    <input type="text" id="title" [(ngModel)]="movie.title" class="form-control"/>
-  </div>
+    <h2 class="mb-4 text-center">Modifier le film</h2>
 
-  <div class="d-flex flex-column w-50 mb-3">
-    <label for="director">Réalisateur</label>
-    <input type="text" id="director" [(ngModel)]="movie.director" class="form-control"/>
-  </div>
+    <!-- TITRE -->
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input
+        type="text"
+        id="title"
+        [(ngModel)]="movie.title"
+        class="form-control"
+      />
+    </div>
 
-  <div class="d-flex flex-column w-50 mb-3">
-    <label class="me-2" for="releaseDate">Date de sortie</label>
-    <input
-      type="date"
-      id="releaseDate"
-      name="releaseDate"
-      [value]="movie.releaseDate | date:'yyyy-MM-dd'"
-      (change)="movie.releaseDate = $any($event.target).value"/>
-  </div>
+    <!-- REALISATEUR -->
+    <div class="form-group">
+      <label for="director">Réalisateur</label>
+      <input
+        type="text"
+        id="director"
+        [(ngModel)]="movie.director"
+        class="form-control"
+      />
+    </div>
 
-  <div class="d-flex flex-column w-50 mb-3">
-    <label for="synopsis">Synopsis</label>
-    <textarea id="synopsis" rows="5" [(ngModel)]="movie.synopsis" class="form-control"></textarea>
-  </div>
+    <!-- DATE -->
+    <div class="form-group">
+      <label for="releaseDate">Date de sortie</label>
+      <input
+        type="date"
+        id="releaseDate"
+        name="releaseDate"
+        [value]="movie.releaseDate | date:'yyyy-MM-dd'"
+        (change)="movie.releaseDate = $any($event.target).value"
+        class="form-control"
+      />
+    </div>
 
-  <div class="d-flex gap-2 mt-3 mb-5">
-    <button class="btn btn-warning" (click)="save()">Mettre à jour</button>
-    <button class="btn btn-secondary" (click)="cancel()">Annuler</button>
+    <!-- SYNOPSIS -->
+    <div class="form-group">
+      <label for="synopsis">Synopsis</label>
+      <textarea
+        id="synopsis"
+        rows="5"
+        [(ngModel)]="movie.synopsis"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <!-- BOUTONS -->
+    <div class="d-flex justify-content-center gap-3 mt-4 mb-3">
+      <button
+        class="btn btn-warning btn-lg px-5"
+        (click)="save()">
+        Mettre à jour
+      </button>
+      <button
+        class="btn btn-secondary btn-lg px-5"
+        (click)="cancel()">
+        Annuler
+      </button>
+    </div>
+
   </div>
 </div>
