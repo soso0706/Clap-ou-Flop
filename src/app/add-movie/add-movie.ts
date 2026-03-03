@@ -22,12 +22,14 @@ export class AddMovie {
     synopsis: '',
     id: undefined,
     rate: undefined, 
-    image: undefined
+    image: undefined,
 }
+
 
  addMovie(): void {
     this.moviesApi.addMovie(this.movie).subscribe(
-        () => {
+        () => 
+          {
           this.toastr.success('✅ Film ajouté avec succès ! ', 'Succès');
           this.router.navigate(['/movies']);
         }
@@ -38,6 +40,7 @@ export class AddMovie {
   private readonly router = inject(Router);
   private toastr = inject(ToastrService);
   today = new Date().toISOString().split('T')[0];
+
 
 
 }
