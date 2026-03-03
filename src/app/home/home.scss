@@ -1,5 +1,43 @@
-:host {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.rail {
+  margin: 24px 0;
 }
+
+.rail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 10px;
+}
+
+.rail-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: white;
+  font-weight: 700;
+}
+
+.rail-nav {
+  display: flex;
+  gap: 8px;
+}
+
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 16px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 240px;
+}
+.prev { left: 10px; }
+.next { right: 10px; }

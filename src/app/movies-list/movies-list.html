@@ -1,54 +1,76 @@
-<div class="container mt-4">
+<div class="page">
+  <div class="header">
+    <div>
+      <h1 class="title">Gestion des films</h1>
+      <p class="subtitle">Ajoute, modifie et supprime tes films.</p>
+    </div>
 
-  <h1 class="mb-4">Gestion des films</h1>
-
-  <table class="table table-striped table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th>ID</th>
-        <th>Titre</th>
-        <th>Date</th>
-        <th>Réalisateur</th>
-        <th>Note</th>
-        <th>Synopsis</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @for(movie of movies; track movie.id) {
-      <tr>
-        <td>{{ movie.id }}</td>
-        <td>{{ movie.title }}</td>
-        <td>{{ movie.releaseDate | date:'dd/MM/yy' }}</td>
-        <td>{{ movie.director }}</td>
-        <td>{{ movie.rate }}</td>
-        <td>{{ movie.synopsis }}</td>
-        <td class="text-center">
-  <div class="d-flex justify-content-center gap-2">
-    
-    <button
-      type="button"
-      class="btn btn-outline-primary btn-sm action-btn"
-      (click)="updateMovie(movie.id!)">
-      <i class="bi bi-pencil-fill"></i>
+    <button type="button" class="btn btn-primary" routerLink="/add-movie">
+      Nouveau film
     </button>
-
-    <button
-      type="button"
-      class="btn btn-outline-danger btn-sm action-btn"
-      (click)="deleteMovie(movie.id!)">
-      <i class="bi bi-trash-fill"></i>
-    </button>
-
   </div>
-</td>
-      </tr>
-    }
-    </tbody>
-  </table>
 
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th class="text-center">Affiche</th>
+            <th>Titre</th>
+            <th>Date</th>
+            <th>Réalisateur</th>
+            <th class="text-center">Note</th>
+            <th>Synopsis</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for(movie of movies; track movie.id) {
+            <tr>
+              <td class="text-center">
+                <img
+                  class="movie-img"
+                  [src]="'http://localhost:8080/movies/' + movie.id + '/image'"
+                  [alt]="movie.title"
+                />
+              </td>
+
+              <td>
+                <a [routerLink]="['/movies', movie.id]" class="movie-link">
+                  {{ movie.title }}
+                </a>
+              </td>
+              <td>{{ movie.releaseDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ movie.director }}</td>
+
+              <td class="text-center">
+                <span class="badge rating">{{ movie.rate ?? '—' }}</span>
+              </td>
+
+              <td> {{ movie.synopsis }}</td>
+
+              <td class="text-center">
+                <div class="d-flex justify-content-center gap-2">
+                  <button
+                    type="button"
+                    class="btn btn-light btn-sm icon-btn"
+                    (click)="updateMovie(movie.id!)">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-light btn-sm icon-btn danger"
+                    (click)="deleteMovie(movie.id!)">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-
-<button type="button" class="btn btn-warning" routerLink="/add-movie">Nouveau film</button>

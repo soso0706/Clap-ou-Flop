@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 import { inject } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -35,4 +36,13 @@ updateMovie(movie: Movie): Observable<Movie> {
   return this.httpClient.put<Movie>(`${this.url}/${movie.id}`, movie);
 }
 
+uploadMovieImage(movieId: number, file: File) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  return this.httpClient.post(
+    `http://localhost:8080/movies/${movieId}/image`,
+    formData
+  );
+}
 }
