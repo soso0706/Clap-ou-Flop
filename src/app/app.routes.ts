@@ -9,4 +9,5 @@ export const routes: Routes = [
     { path: 'movies', component: MoviesList},
     { path: 'add-movie', component: AddMovie},
     { path: 'update-movie/:id', component: UpdateMovie}
+    
 ];

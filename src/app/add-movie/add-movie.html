@@ -1,28 +1,84 @@
-<div class="d-flex flex-column w-50">
+<form #f="ngForm" (ngSubmit)="addMovie()" class="d-flex flex-column gap-3">
+
+  <!-- TITRE : MAJUSCULES UNIQUEMENT -->
+  <div class="d-flex flex-column w-50">
     <label for="title">Titre</label>
-    <input type="text" id="title" name="title" [(ngModel)]="movie.title"/>
-</div>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="movie.title"
+      required
+      pattern="^[A-Z ]+$"
+      #title="ngModel"
+      class="form-control"
+    />
+    <small class="text-danger" *ngIf="title.invalid && (title.touched || title.dirty)">
+      Le titre doit être en MAJUSCULES uniquement
+    </small>
+  </div>
 
-<div class="d-flex flex-column w-50">
+  <!-- REALISATEUR : Nom Prenom -->
+  <div class="d-flex flex-column w-50">
     <label for="director">Réalisateur</label>
-    <input type="text" id="director" name="director" [(ngModel)]="movie.director"/>
-</div>
+    <input
+      type="text"
+      id="director"
+      name="director"
+      [(ngModel)]="movie.director"
+      required
+      pattern="^[A-Z][a-z]+ [A-Z][a-z]+$"
+      #director="ngModel"
+      class="form-control"
+    />
+    <small class="text-danger" *ngIf="director.invalid && director.touched">
+      Format attendu : Nom Prenom
+    </small>
+  </div>
 
-<div class="d-flex flex-column w-50">
+  <!-- DATE : ANTERIEURE A AUJOURD'HUI -->
+  <div class="d-flex flex-column w-50">
     <label for="releaseDate">Date de sortie</label>
-    <input type="date" id="releaseDate" name="releaseDate" [(ngModel)]="movie.releaseDate"/>
-</div>
+    <input
+      type="date"
+      id="releaseDate"
+      name="releaseDate"
+      [(ngModel)]="movie.releaseDate"
+      required
+      [max]="today"
+      #releaseDate="ngModel"
+      class="form-control"
+    />
+    <small class="text-danger" *ngIf="releaseDate.invalid && releaseDate.touched">
+      La date doit être antérieure à aujourd’hui
+    </small>
+  </div>
 
-<div class="d-flex flex-column w-50">
+  <!-- SYNOPSIS : MIN 30 CARACTERES -->
+  <div class="d-flex flex-column w-50">
     <label for="synopsis">Synopsis</label>
     <textarea
-        id="synopsis"
-        name="synopsis"
-        [(ngModel)]="movie.synopsis"
-        rows="5"
-        class="form-control">
+      id="synopsis"
+      name="synopsis"
+      [(ngModel)]="movie.synopsis"
+      rows="5"
+      minlength="30"
+      required
+      class="form-control"
+      #synopsis="ngModel">
     </textarea>
-</div>
+    <small class="text-danger" *ngIf="synopsis.invalid && synopsis.touched">
+      Le synopsis doit contenir au moins 30 caractères
+    </small>
+  </div>
 
- <button class="btn btn-warning" (click)=addMovie()>Ajouter</button>
+  <!-- BOUTON -->
+  <button
+    type="submit"
+    class="btn btn-warning w-25 mt-3"
+    [disabled]="f.invalid">
+    Ajouter
+  </button>
+
+</form>
 
