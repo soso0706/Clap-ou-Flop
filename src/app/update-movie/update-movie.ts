@@ -5,6 +5,8 @@ import { Movie } from '../models/movie';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -18,6 +20,8 @@ export class UpdateMovie {
   private readonly moviesApi = inject(MoviesApi);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private toastr = inject(ToastrService);
+
   private readonly location = inject(Location);
 
   movie: Movie = {
@@ -40,12 +44,19 @@ export class UpdateMovie {
   }
 
   save(): void {
-    this.moviesApi.updateMovie(this.movie).subscribe(() => {
+  this.moviesApi.updateMovie(this.movie).subscribe({
+    next: () => {
+      this.toastr.success('🎉 Film mis à jour avec succès ', 'Succès');
       this.location.back();
-    });
-  }
+    },
+    error: () => {
+      this.toastr.error('❌ Erreur lors de la mise à jour ', 'Erreur');
+    }
+  });
+}
 
   cancel(): void {
+    this.toastr.info('ℹ️ Aucune modification n’a été enregistrée');
     this.location.back();
   }
 }

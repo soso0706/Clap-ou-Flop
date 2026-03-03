@@ -4,11 +4,14 @@ import { MoviesList } from './movies-list/movies-list';
 import { AddMovie } from './add-movie/add-movie';
 import { UpdateMovie } from './update-movie/update-movie';
 import { MoviePage } from './movie-page/movie-page';
+import { Contact } from './contact/contact';
 
 export const routes: Routes = [
     { path: '', component: Home},
     { path: 'movies', component: MoviesList},
     { path: 'add-movie', component: AddMovie},
     { path: 'update-movie/:id', component: UpdateMovie},
+    { path: 'contact', component: Contact}
+    ,
     { path: 'movies/:id', component: MoviePage },
 ];

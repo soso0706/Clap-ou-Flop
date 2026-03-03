@@ -3,10 +3,12 @@ import { Movie } from '../models/movie';
 import { FormsModule } from '@angular/forms';
 import { MoviesApi } from '../services/movies-api';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-movie',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-movie.html',
   styleUrl: './add-movie.scss',
 })
@@ -25,6 +27,11 @@ export class AddMovie {
 
   private readonly moviesApi = inject(MoviesApi);
   private readonly router = inject(Router);
+  private toastr = inject(ToastrService);
+  today = new Date().toISOString().split('T')[0];
+
+
+
 
   onPosterSelected(event: Event) {
     const input = event.target as HTMLInputElement;
