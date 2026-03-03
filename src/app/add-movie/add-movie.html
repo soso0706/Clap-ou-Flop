@@ -3,7 +3,7 @@
 
     <h2 class="mb-4 text-center">Ajouter un nouveau film</h2>
 
-    <form #f="ngForm" (ngSubmit)="addMovie()" class="d-flex flex-column gap-3 mb-5">
+    <form #f="ngForm" (ngSubmit)="addMovie()" class="d-flex flex-column gap-3 mb-4">
 
       <!-- TITRE -->
       <div class="form-group">
@@ -101,28 +101,37 @@
         </small>
       </div>
 
-      <!-- BOUTON AJOUTER -->
-      <div class="text-center mt-4">
+      <!-- AFFICHE (INTÉGRÉE DANS LE FORMULAIRE) -->
+      <div class="form-group">
+        <label for="poster">Affiche</label>
+        <input
+          type="file"
+          id="poster"
+          accept="image/*"
+          class="form-control"
+          (change)="onPosterSelected($event)"
+        />
+      </div>
+
+      <!-- BOUTONS -->
+      <div class="d-flex justify-content-center gap-3 mt-4">
+
         <button
           type="submit"
-          class="btn btn-warning btn-lg px-5"
+          class="btn btn-warning btn-lg px-4"
           [disabled]="f.invalid">
           Ajouter
         </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-light btn-lg px-4"
+          (click)="cancel()">
+          Annuler
+        </button>
+
       </div>
 
     </form>
   </div>
 </div>
-
-<div class="d-flex flex-column w-50">
-  <label for="poster">Affiche</label>
-  <input
-    type="file"
-    id="poster"
-    accept="image/*"
-    class="form-control"
-    (change)="onPosterSelected($event)"
-  />
-</div>
-

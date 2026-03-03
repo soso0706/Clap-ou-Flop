@@ -38,18 +38,29 @@ export class AddMovie {
     this.posterFile = input.files?.[0] ?? null;
   }
 
-  addMovie(): void {
-    this.moviesApi.addMovie(this.movie).subscribe((createdMovie: Movie) => {
-      const id = createdMovie?.id;
-
-      if (!this.posterFile || !id) {
-        this.router.navigate(['/movies']);
-        return;
-      }
-
+addMovie(): void {
+  this.moviesApi.addMovie(this.movie).subscribe((createdMovie: Movie) => {
+    const id = createdMovie?.id;
+    if (this.posterFile && id) {
+      // Upload de l'image
       this.moviesApi.uploadMovieImage(id, this.posterFile).subscribe(() => {
+        this.toastr.success('✅ Film ajouté avec succès !', 'Succès');
+        this.router.navigate(['/movies']);
+      }, err => {
+        this.toastr.error('⚠️ Le film a été ajouté mais l’image n’a pas pu être uploadée', 'Erreur');
         this.router.navigate(['/movies']);
       });
-    });
-  }
+    } else {
+      // Pas d'image, juste naviguer
+      this.toastr.success('✅ Film ajouté avec succès !', 'Succès');
+      this.router.navigate(['/movies']);
+    }
+  }, err => {
+    this.toastr.error('⚠️ Impossible d’ajouter le film', 'Erreur');
+  });
+}
+
+  cancel(): void {
+  this.router.navigate(['/movies']);
+}
 }

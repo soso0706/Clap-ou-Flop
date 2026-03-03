@@ -38,9 +38,9 @@ updateMovie(movie: Movie): Observable<Movie> {
 
 uploadMovieImage(movieId: number, file: File) {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append('filmImage', file); 
 
-  return this.httpClient.post(
+  return this.httpClient.put(
     `http://localhost:8080/movies/${movieId}/image`,
     formData
   );

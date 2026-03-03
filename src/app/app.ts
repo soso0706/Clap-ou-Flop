@@ -11,5 +11,5 @@ import { Footer } from './footer/footer';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Clap Ou Flop');
+  protected readonly title = signal('Clap ou Flop');
 }

@@ -67,3 +67,16 @@ label {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(85,170,249,0.5);
 }
+
+.btn-outline-light {
+  border: 1px solid #55aaf9;
+  color: #ddfafe;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.btn-outline-light:hover {
+  background-color: #ddfafe;
+  color: #081562;
+  transform: translateY(-2px);
+}
