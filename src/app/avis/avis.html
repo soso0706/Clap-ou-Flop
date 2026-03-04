@@ -1,0 +1,53 @@
+<div class="update-movie-container">
+  <div class="card shadow p-4">
+
+    <h2 class="mb-4 text-center">Ajouter un avis</h2>
+
+    <p *ngIf="movie" class="mb-3">
+      Film : <strong>{{ movie.title }}</strong>
+    </p>
+
+    <p class="mb-3">
+      Utilisateur : <strong>#3</strong>
+    </p>
+
+    <!-- NOTE -->
+    <div class="form-group mt-3">
+      <label>Note</label>
+
+      <div class="rating-stars">
+        @for (star of [1,2,3,4,5]; track star) {
+          <span
+            (click)="review.rate = star"
+            [class.active]="review.rate >= star">
+            ★
+          </span>
+        }
+      </div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="form-group mt-3">
+      <label for="text">Commentaire</label>
+      <textarea
+        id="text"
+        name="text"
+        rows="5"
+        [(ngModel)]="review.text"
+        class="form-control"
+        placeholder="Écris ton avis..."
+      ></textarea>
+    </div>
+
+    <!-- BOUTONS -->
+    <div class="d-flex justify-content-center gap-3 mt-4 mb-3">
+      <button type="button" class="btn btn-warning btn-lg px-5" (click)="save()">
+        Publier
+      </button>
+      <button type="button" class="btn btn-secondary btn-lg px-5" (click)="cancel()">
+        Annuler
+      </button>
+    </div>
+
+  </div>
+</div>

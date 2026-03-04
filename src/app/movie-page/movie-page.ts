@@ -50,6 +50,12 @@ export class MoviePage {
   goBack(): void {
     this.location.back();
   }
+  addreview(): void {
+    if (!this.movie?.id) return;
+    console.log('ça marche');
+    this.router.navigate(['/avis', this.movie.id]);
+
+  }
 
 
 /*
