@@ -20,5 +20,8 @@ export class Contact {
     // Redirection instantanée vers l'accueil
     this.router.navigate(['/']);
   }
+    cancel(): void {
+  this.router.navigate(['/']);
+}
 
 }

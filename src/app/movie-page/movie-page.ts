@@ -31,6 +31,7 @@ export class MoviePage {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (m) => {
+    
           this.movie = m;
           this.loading = false;
         },
@@ -50,6 +51,8 @@ export class MoviePage {
     this.location.back();
   }
 
+
+/*
   edit(): void {
     if (!this.movie?.id) return;
     this.router.navigate(['/update-movie', this.movie.id]);
@@ -61,5 +64,7 @@ export class MoviePage {
       .deleteMovie(this.movie.id)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.router.navigate(['/movies-list']));
+    this.router.navigate(['/']);
   }
+  */
 }
