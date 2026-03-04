@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { User } from '../models/user';
 import { UsersApi } from '../services/users-api';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compte-user',
@@ -14,6 +14,7 @@ export class CompteUser {
   private readonly usersApi = inject(UsersApi);
 
   user!:User;
+  constructor(private router:Router){}
   ngOnInit(): void{
     const email = localStorage.getItem('userEmail');
     
@@ -23,6 +24,8 @@ export class CompteUser {
       });
     }
   }
+
+  
   
 
     

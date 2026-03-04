@@ -48,8 +48,16 @@
     </button>
 
     <div class="account-dropdown" *ngIf="isOpen">
+      <!--Si connecté : Deconnexion-->
+      <ng-container *ngIf="isLoggedIn; else notLogged">
+      <a routerLink="/compte-user" (click)="closeMenu()">Mon profil</a>
+      <a (click)="logout()">Déconnexion</a>
+      </ng-container>
+      <!-- Si non connecté → Connexion + Inscription -->
+      <ng-template #notLogged>
       <a routerLink="/inscription" (click)="closeMenu()">Inscription</a>
       <a routerLink="/connexion" (click)="closeMenu()">Connexion</a>
-    </div>
-  </div>
+    </ng-template>
+  </div>  
+</div>
 </nav>

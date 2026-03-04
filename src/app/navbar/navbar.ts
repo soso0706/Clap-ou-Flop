@@ -20,6 +20,7 @@ export class Navbar {
   private readonly elRef = inject(ElementRef);
 
   isOpen = false;
+  
 
   // 🔎 Search
   searchCtrl = new FormControl('', { nonNullable: true });
@@ -47,6 +48,14 @@ export class Navbar {
     })
   );
 
+  constructor(){}
+
+  
+
+  get isLoggedIn() : boolean{
+    return !!localStorage.getItem('userEmail');
+  }
+
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
@@ -65,6 +74,23 @@ export class Navbar {
     this.searchCtrl.setValue('');
     this.router.navigate(['/movies', movie.id]);
   }
+
+  logout(){
+    localStorage.removeItem('userEmail');
+    this.closeMenu();
+    this.router.navigate(['/connexion']);
+  }
+
+ 
+
+  onAccountClick() {
+  if (this.isLoggedIn) {
+    // Si connecté → va sur la page compte
+    this.router.navigate(['/compte-user']);
+  } else {
+    // Sinon → ouvre le menu
+    this.toggleMenu();
+  }}
 
   // ✅ ferme les suggestions si clic en dehors
   @HostListener('document:click', ['$event'])

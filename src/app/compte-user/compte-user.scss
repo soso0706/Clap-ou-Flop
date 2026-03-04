@@ -162,3 +162,17 @@ body {
 .activity li {
   margin-bottom: 10px;
 }
+
+.logout-button {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.logout-button:hover {
+  background-color: #ff7875;
+}
