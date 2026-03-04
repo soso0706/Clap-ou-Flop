@@ -1,0 +1,36 @@
+<div class="mini-game-container">
+  <div class="card shadow p-4">
+
+    <h1 class="mb-4 text-center">Quel personnage de film es-tu ?</h1>
+
+    <form #gameForm="ngForm" (ngSubmit)="play()" class="d-flex flex-column gap-3 mb-4">
+
+      <div class="form-group d-flex gap-2 justify-content-center">
+        <input
+          type="text"
+          name="userName"
+          [(ngModel)]="userName"
+          placeholder="Entre ton prénom"
+          required
+          class="form-control"
+        />
+        <button type="submit" [disabled]="gameForm.invalid" class="btn btn-primary">
+          Découvrir
+        </button>
+      </div>
+
+    </form>
+
+    <div class="result">
+      <div class="result-placeholder text-center" *ngIf="!result">
+        <span class="question-mark">?</span>
+      </div>
+
+      <div class="result-image text-center" *ngIf="result">
+        <h2 class="text-center mt-3">Tu es… {{ result.name }} !</h2>
+        <img [src]="result.imageUrl" [alt]="result.name" />
+      </div>
+    </div>
+
+  </div>
+</div>
