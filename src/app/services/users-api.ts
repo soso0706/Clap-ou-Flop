@@ -44,4 +44,8 @@ export class UsersApi {
     return this.httpClient.put<User>(`${this.url}/${user.id}`, userUpdated)
   }
 
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url);
+  }
+  
 }
