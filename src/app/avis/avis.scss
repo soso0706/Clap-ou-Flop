@@ -1,0 +1,107 @@
+.update-movie-container {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.card {
+  background-color: #081562; /* Violet Indigo */
+  color: #ddfafe; /* texte bleu clair */
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  color: #55aaf9; /* titre bleu */
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #ddfafe;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #55aaf9;
+  padding: 10px 12px;
+  background-color: #081562;
+  color: #ddfafe;
+  transition: all 0.3s;
+}
+
+.form-control::placeholder {
+  color: #a0d4f9;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #55aaf9;
+  box-shadow: 0 0 5px rgba(85,170,249,0.6);
+}
+
+/* textarea spécifique */
+textarea.form-control {
+  resize: none;
+  min-height: 120px;
+}
+
+/* système d'étoiles */
+.rating-stars {
+  display: flex;
+  gap: 6px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #a0d4f9;
+}
+
+.rating-stars span {
+  transition: transform 0.2s, color 0.2s;
+}
+
+.rating-stars span.active {
+  color: #f505f1;
+}
+
+.rating-stars span:hover {
+  transform: scale(1.2);
+}
+
+/* boutons */
+.btn-warning {
+  background-color: #55aaf9;
+  border: none;
+  color: #081562;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-warning:hover {
+  background-color: #ddfafe;
+  color: #081562;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(85,170,249,0.5);
+}
+
+.btn-secondary {
+  background-color: #ddfafe;
+  color: #081562;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #55aaf9;
+  color: #081562;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(85,170,249,0.5);
+}

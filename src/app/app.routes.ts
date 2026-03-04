@@ -10,6 +10,7 @@ import { MoviePage } from './movie-page/movie-page';
 import { Contact } from './contact/contact';
 import { MiniGame } from './mini-game/mini-game';
 import { PopCornHoroscope } from './pop-corn-horoscope/pop-corn-horoscope';
+import { AddReview } from './avis/avis';
 
 
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
     { path: 'movies/:id', component: MoviePage },
     { path: 'mini-game', component: MiniGame },
     { path: 'pop-corn-horoscope', component: PopCornHoroscope},
+    { path: 'avis/:id', component: AddReview},
     { path: 'update-movie/:id', component: UpdateMovie},
     { path: 'connexion', component: Connexion},
     { path: 'inscription', component: Inscription},

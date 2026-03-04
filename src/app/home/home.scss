@@ -24,6 +24,7 @@
 
 
 .scroll-container {
+  z-index: 1;
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
