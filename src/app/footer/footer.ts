@@ -13,7 +13,6 @@ export class Footer {
   @Input() title!: string;
   currentYear = new Date().getFullYear();
 
-  // liens personnalisables
   newsletterLink = 'https://www.cnc.fr/cinema/actualites';
   facebookLink = 'https://facebook.com';
   twitterLink = 'https://twitter.com';

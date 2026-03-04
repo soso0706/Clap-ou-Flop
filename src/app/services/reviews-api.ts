@@ -12,7 +12,6 @@ export class ReviewApi {
     return this.httpClient.post<Review>(`${this.baseUrl}/reviews`, review);
   }
 
-  // optionnel pour plus tard
   getReviewsByMovieId(movieId: number): Observable<Review[]> {
     return this.httpClient.get<Review[]>(`${this.baseUrl}/movies/${movieId}/reviews`);
   }

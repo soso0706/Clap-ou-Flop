@@ -51,7 +51,6 @@ addMovie(): void {
         this.router.navigate(['/movies']);
       });
     } else {
-      // Pas d'image, juste naviguer
       this.toastr.success('✅ Film ajouté avec succès !', 'Succès');
       this.router.navigate(['/movies']);
     }
