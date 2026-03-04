@@ -30,4 +30,18 @@ export class UsersApi {
     return this.httpClient.get<User>(`${this.url}/byEmail/${email}`);
   }
 
+
+  changePoint(user : User): Observable<User>{
+    const userUpdated: User = {
+    id: user.id,
+    firstName:user.firstName,
+    lastName:user.lastName,
+    age:user.age,
+    email:user.email,
+    points:(user.points ?? 0) + 5
+  }
+  console.log(userUpdated)
+    return this.httpClient.put<User>(`${this.url}/${user.id}`, userUpdated)
+  }
+
 }

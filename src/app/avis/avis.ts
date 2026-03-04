@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, untracked } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Location, NgIf } from '@angular/common';
@@ -10,6 +10,7 @@ import { ReviewApi } from '../services/reviews-api';
 import { Movie } from '../models/movie';
 import { Review } from '../models/review';
 import { User } from '../models/user';
+import { UsersApi } from '../services/users-api';
 
 @Component({
   selector: 'app-add-review',
@@ -26,15 +27,23 @@ export class AddReview {
   private readonly moviesApi = inject(MoviesApi);
   private readonly reviewApi = inject(ReviewApi);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly userApi = inject(UsersApi)
 
   movie?: Movie; // juste pour afficher le titre 
+
+  currentUser:User={
+    firstName:'',
+    lastName:'',
+    age:0,
+    email:'',
+    points:0
+  };
+
 
   review: Review = {
     rate: 5,
     text: '',
-
-    user: { id: 3 } as User,
-
+    user: this.currentUser,
     movie: undefined,
   };
 
@@ -54,6 +63,14 @@ export class AddReview {
         next: (m) => (this.movie = m),
         error: () => { }
       });
+    
+    this.userApi.getByEmail('alainposteur@outlook.com').subscribe({
+      next: (u) => {
+        this.review.user = u;
+      },
+      error: (e) => console.error(e)
+    });
+
   }
 
   save(): void {
@@ -66,11 +83,12 @@ export class AddReview {
       return;
     }
 
-    this.review.user = { id: 3 } as User;
+    console.log("ADD REVIEW")
 
     this.reviewApi.addReview(this.review).subscribe({
       next: () => {
         this.toastr.success('🎉 Avis ajouté', 'Succès');
+        this.userApi.changePoint(this.review.user).subscribe();
         this.location.back();
       },
       error: () => {
