@@ -92,7 +92,9 @@ export class Navbar {
     this.toggleMenu();
   }}
 
-  // ✅ ferme les suggestions si clic en dehors
+
+ 
+
   @HostListener('document:click', ['$event'])
   onDocClick(event: MouseEvent) {
     const clickedInside = this.elRef.nativeElement.contains(event.target);

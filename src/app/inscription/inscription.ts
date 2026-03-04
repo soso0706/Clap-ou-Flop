@@ -32,9 +32,4 @@ createUser(): void {
         this.router.navigate(['/compte-user']);
     });
  }
-
-  
-
-
-
 }
