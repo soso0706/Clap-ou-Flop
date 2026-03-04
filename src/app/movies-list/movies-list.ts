@@ -6,6 +6,7 @@ import { DatePipe, AsyncPipe, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,6 +21,7 @@ export class MoviesList {
 
   private readonly moviesApi = inject(MoviesApi);
   private readonly router = inject(Router);
+  private toastr = inject(ToastrService);
 
   movies: Movie[] = [];
   ngOnInit(): void {
@@ -29,9 +31,12 @@ export class MoviesList {
 
   private destroyRef = inject(DestroyRef)    
   deleteMovie(id: number): void {
-    this.moviesApi.deleteMovie(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => 
+    this.moviesApi.deleteMovie(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
         this.movies = this.movies.filter(film => film.id !== id)
-    );
+        this.toastr.success('☑️ Film supprimé avec succès !', 'Succès');
+    }, error => {
+        this.toastr.error('❌ Erreur lors de la suppression du film ! ', 'Erreur');
+    });
 }
 
  updateMovie(id: number): void {

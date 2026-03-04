@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 import { inject } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,6 +15,10 @@ export class MoviesApi {
   getMovies(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(this.url);
   }
+
+  getMovie(id: number) {
+  return this.httpClient.get<Movie>(`http://localhost:8080/movies/${id}`);
+}
 
   addMovie(movie: Movie): Observable<Movie> {
     return this.httpClient.post<Movie>(this.url, movie);
@@ -31,4 +36,13 @@ updateMovie(movie: Movie): Observable<Movie> {
   return this.httpClient.put<Movie>(`${this.url}/${movie.id}`, movie);
 }
 
+uploadMovieImage(movieId: number, file: File) {
+  const formData = new FormData();
+  formData.append('filmImage', file); 
+
+  return this.httpClient.put(
+    `http://localhost:8080/movies/${movieId}/image`,
+    formData
+  );
+}
 }

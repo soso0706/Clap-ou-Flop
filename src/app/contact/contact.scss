@@ -1,4 +1,4 @@
-.add-movie-container {
+.contact-container {
   max-width: 700px;
   margin: 40px auto;
 }
@@ -20,6 +20,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 label {
@@ -47,12 +48,6 @@ label {
   box-shadow: 0 0 5px rgba(85,170,249,0.6);
 }
 
-.text-danger {
-  font-size: 0.8rem;
-  margin-top: 3px;
-  color: #ff6b6b; /* erreur rouge légère */
-}
-
 .btn-warning {
   background-color: #55aaf9; /* bleu */
   border: none;
@@ -63,20 +58,7 @@ label {
 
 .btn-warning:hover {
   background-color: #ddfafe; /* bleu clair au hover */
-  color: #081562; /* texte sombre */
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(85,170,249,0.5);
-}
-
-.btn-outline-light {
-  border: 1px solid #55aaf9;
-  color: #ddfafe;
-  background: transparent;
-  transition: all 0.3s;
-}
-
-.btn-outline-light:hover {
-  background-color: #ddfafe;
   color: #081562;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(85,170,249,0.5);
 }

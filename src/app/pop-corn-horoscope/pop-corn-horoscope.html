@@ -1,0 +1,27 @@
+<div class="popcorn-container">
+  <h2>🎬 Pop-Corn Horoscope WTF</h2>
+  <p>Découvre ton pop-corn complètement farfelu selon ta date de naissance !</p>
+
+  <form (ngSubmit)="generateHoroscope()" #f="ngForm">
+    <input
+      type="date"
+      [(ngModel)]="birthDate"
+      name="birthDate"
+      required
+      class="popcorn-input"
+    />
+    <button type="submit" class="popcorn-btn">Découvrir mon Pop-Corn</button>
+  </form>
+
+  <!-- Cadre avec point d'interrogation -->
+  <div class="popcorn-frame" *ngIf="!result">
+    <span class="question-mark">?</span>
+  </div>
+
+  <!-- Résultat -->
+  <div class="popcorn-result" *ngIf="result">
+    <span class="emoji">{{ result.emoji }}</span>
+    <h3>{{ result.flavor }}</h3>
+    <p>{{ result.message }}</p>
+  </div>
+</div>

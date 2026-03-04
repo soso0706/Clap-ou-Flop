@@ -1,0 +1,44 @@
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <!-- Gauche -->
+    <div class="footer-left">
+      <a [href]="newsletterLink" target="_blank" class="actu-link">
+        Actu Cinéma
+      </a>
+    </div>
+
+    <!-- Centre -->
+    <div class="footer-center">
+     © {{ currentYear }} – <span class="brand">{{ title | titlecase }}</span>
+    </div>
+
+    <!-- Droite -->
+    <div class="footer-right">
+      <a [href]="facebookLink" target="_blank" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+
+      <a [href]="instagramLink" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a [href]="twitterLink" target="_blank" aria-label="Twitter">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Ligne décorative -->
+  <div class="footer-divider"></div>
+
+  <!-- Bas -->
+  <div class="footer-bottom">
+    <a routerLink="/contact" class="contact-link">
+      Nous contacter
+    </a>
+  </div>
+
+</footer>
