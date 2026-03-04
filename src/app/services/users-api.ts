@@ -30,4 +30,8 @@ export class UsersApi {
     return this.httpClient.get<User>(`${this.url}/byEmail/${email}`);
   }
 
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.url);
+  }
+  
 }

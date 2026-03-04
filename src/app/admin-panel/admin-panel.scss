@@ -3,33 +3,33 @@
   min-height: 100vh;
   color: #ddfafe; /* texte bleu clair */
   font-family: 'Poppins', sans-serif;
-  /* pas de fond uni ici, le fond global reste visible */
+  /* fond global de votre site reste visible */
 }
 
 .admin-title {
-  font-size: 2.5rem; /* légèrement plus grand */
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 3rem;
   letter-spacing: 1px;
-  color: #081562; /* bleu foncé pour bien ressortir sur fond */
+  color: #081562; /* bleu foncé */
 }
 
 /* GRID */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* max 4 par ligne */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2.5rem;
 }
 
 /* CARD */
 .stat-card {
-  background-color: #081562; /* foncé pour bien voir contenu */
+  background-color: rgba(8, 21, 98, 0.85); /* foncé, semi-transparent pour voir le fond */
   border-radius: 15px;
-  padding: 2.5rem 1.5rem; /* un peu plus grand */
+  padding: 2.5rem 1.5rem;
   text-align: center;
   transition: 0.3s ease;
-  border: 1px solid #55aaf9; /* contour bleu */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* relief */
+  border: 1px solid #55aaf9;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .stat-card:hover {
@@ -39,7 +39,7 @@
 
 /* CERCLE */
 .stat-circle {
-  width: 140px; /* plus grand */
+  width: 140px;
   height: 140px;
   margin: 0 auto 1.5rem auto;
   border-radius: 50%;
@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
 
-  background: #0f1e62; /* légèrement plus clair que la card */
+  background: #0f1e62; 
   border: 2px solid #55aaf9;
 
   font-size: 2rem;
