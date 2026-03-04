@@ -1,0 +1,80 @@
+<div class="account-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 class="logo">MonCompte</h2>
+    <ul>
+      <li class="active">Tableau de bord</li>
+      <li>Mes favoris</li>
+      <li>Films vus</li>
+      <li>Paramètres</li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+
+    <div class="header">
+    <div *ngIf="user">
+      <h1>Bienvenue {{user.firstName}} 👋</h1>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="avatar">
+        {{user.firstName.charAt(0)}}{{user.lastName.charAt(0)}}
+      </div>
+      <div class="profile-info">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{user.email}}</p>
+        <p>{{user.age}} ans</p>
+      </div>
+      <div class="points">
+        <span>{{user.points}}</span>
+        <p>Points fidélité</p>
+      </div>
+    </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-box">
+        <h3>124</h3>
+        <p>Films vus</p>
+      </div>
+      <div class="stat-box">
+        <h3>18</h3>
+        <p>Favoris</p>
+      </div>
+      <div class="stat-box">
+        <h3>4.2 ⭐</h3>
+        <p>Note moyenne</p>
+      </div>
+      <div class="stat-box">
+        <h3>Action</h3>
+        <p>Genre préféré</p>
+      </div>
+    </div>
+
+    <!-- Fake Favorites -->
+    <div class="section">
+      <h2>🎬 Mes films favoris</h2>
+      <div class="movie-list">
+        <div class="movie-card">Inception</div>
+        <div class="movie-card">Interstellar</div>
+        <div class="movie-card">Avengers</div>
+      </div>
+    </div>
+
+    <!-- Fake Activity -->
+    <div class="section">
+      <h2>📝 Activité récente</h2>
+      <ul class="activity">
+        <li>Vous avez noté "Dune" ⭐⭐⭐⭐</li>
+        <li>Vous avez ajouté "Matrix" aux favoris</li>
+        <li>Vous avez gagné 50 points</li>
+      </ul>
+    </div>
+
+  </div>
+</div>

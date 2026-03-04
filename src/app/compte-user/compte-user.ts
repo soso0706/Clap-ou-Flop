@@ -1,0 +1,32 @@
+import { Component, OnInit, inject } from '@angular/core';
+import { User } from '../models/user';
+import { UsersApi } from '../services/users-api';
+
+
+@Component({
+  selector: 'app-compte-user',
+  imports: [],
+  templateUrl: './compte-user.html',
+  styleUrl: './compte-user.scss',
+})
+export class CompteUser {
+
+  private readonly usersApi = inject(UsersApi);
+
+  user!:User;
+  ngOnInit(): void{
+    const email = localStorage.getItem('userEmail');
+    
+    if(email){
+      this.usersApi.getByEmail(email).subscribe((data) =>{
+        this.user=data;
+      });
+    }
+  }
+  
+
+    
+
+}
+
+

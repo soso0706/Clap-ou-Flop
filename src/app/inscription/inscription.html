@@ -1,0 +1,52 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>Inscription</h2>
+        <h3>Veuillez renseigner tous les champs pour vous inscrire !</h3>
+
+        <form>
+            <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input 
+                    type="text"
+                    id="firstName"
+                    placeholder="Votre prénom"
+                    name="firstName"
+                    [(ngModel)]="user.firstName"
+                    required/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input 
+                    type="lastName"
+                    id="lastName"
+                    placeholder="Votre nom"
+                    name="lastName"
+                    [(ngModel)]="user.lastName"
+                    required/>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input 
+                    type="email"
+                    id="email"
+                    placeholder="exemple@email.com"
+                    name="email"
+                    [(ngModel)]="user.email"
+                    required/>
+            </div>
+            <div class="form-group">
+                <label for="age">Âge</label>
+                <input 
+                    type="age"
+                    id="age"
+                    placeholder="Votre âge"
+                    name="age"
+                    [(ngModel)]="user.age"
+                    required/>
+            </div>
+            
+
+            <button type="submit" class="login-button" (click)=createUser() routerLink="/compte-user">S'inscrire</button>
+        </form>
+    </div>
+</div>
