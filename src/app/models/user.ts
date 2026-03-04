@@ -1,8 +1,8 @@
 export interface User{
     id?:number;
-    firstName?:string;
-    lastName?:string;
+    firstName:string;
+    lastName:string;
     age?:number;
-    email?:string;
+    email:string;
     points?: number;
 }
