@@ -7,6 +7,7 @@ import { MoviePage } from './movie-page/movie-page';
 import { Contact } from './contact/contact';
 import { MiniGame } from './mini-game/mini-game';
 import { PopCornHoroscope } from './pop-corn-horoscope/pop-corn-horoscope';
+import { AdminPanel } from './admin-panel/admin-panel';
 
 
 
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'contact', component: Contact},
     { path: 'movies/:id', component: MoviePage },
     { path: 'mini-game', component: MiniGame },
-    { path: 'pop-corn-horoscope', component: PopCornHoroscope}
+    { path: 'pop-corn-horoscope', component: PopCornHoroscope},
+    { path: 'admin-panel', component: AdminPanel},
 ];

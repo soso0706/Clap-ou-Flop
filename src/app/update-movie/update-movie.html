@@ -3,66 +3,80 @@
 
     <h2 class="mb-4 text-center">Modifier le film</h2>
 
-    <!-- TITRE -->
-    <div class="form-group">
-      <label for="title">Titre</label>
-      <input
-        type="text"
-        id="title"
-        [(ngModel)]="movie.title"
-        class="form-control"
-      />
-    </div>
+    <form #f="ngForm" (ngSubmit)="save()">
 
-    <!-- REALISATEUR -->
-    <div class="form-group">
-      <label for="director">Réalisateur</label>
-      <input
-        type="text"
-        id="director"
-        [(ngModel)]="movie.director"
-        class="form-control"
-      />
-    </div>
+      <!-- TITRE -->
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="movie.title"
+          required
+          class="form-control"
+        />
+      </div>
 
-    <!-- DATE -->
-    <div class="form-group">
-      <label for="releaseDate">Date de sortie</label>
-      <input
-        type="date"
-        id="releaseDate"
-        name="releaseDate"
-        [value]="movie.releaseDate | date:'yyyy-MM-dd'"
-        (change)="movie.releaseDate = $any($event.target).value"
-        class="form-control"
-      />
-    </div>
+      <!-- REALISATEUR -->
+      <div class="form-group">
+        <label for="director">Réalisateur</label>
+        <input
+          type="text"
+          id="director"
+          name="director"
+          [(ngModel)]="movie.director"
+          required
+          class="form-control"
+        />
+      </div>
 
-    <!-- SYNOPSIS -->
-    <div class="form-group">
-      <label for="synopsis">Synopsis</label>
-      <textarea
-        id="synopsis"
-        rows="5"
-        [(ngModel)]="movie.synopsis"
-        class="form-control"
-      ></textarea>
-    </div>
-    
 
-    <!-- BOUTONS -->
-    <div class="d-flex justify-content-center gap-3 mt-4 mb-3">
-      <button
-        class="btn btn-warning btn-lg px-5"
-        (click)="save()">
-        Mettre à jour
-      </button>
-      <button
-        class="btn btn-secondary btn-lg px-5"
-        (click)="cancel()">
-        Annuler
-      </button>
-    </div>
+      <!-- DATE -->
+      <div class="form-group">
+        <label for="releaseDate">Date de sortie</label>
+        <input
+          type="date"
+          id="releaseDate"
+          name="releaseDate"
+          [value]="movie.releaseDate | date:'yyyy-MM-dd'"
+          (change)="movie.releaseDate = $any($event.target).value"
+          required
+          class="form-control"
+        />
+      </div>
+
+      <!-- SYNOPSIS -->
+      <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <textarea
+          id="synopsis"
+          name="synopsis"
+          rows="5"
+          [(ngModel)]="movie.synopsis"
+          required
+          class="form-control"
+        ></textarea>
+      </div>
+
+      <!-- BOUTONS -->
+      <div class="d-flex justify-content-center gap-3 mt-4 mb-3">
+        <button
+          type="submit"
+          class="btn btn-warning btn-lg px-5"
+          [disabled]="f.invalid">
+          Mettre à jour
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary btn-lg px-5"
+          (click)="cancel()">
+          Annuler
+        </button>
+      </div>
+
+    </form>
 
   </div>
 </div>
