@@ -1,0 +1,117 @@
+.popcorn-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #081562;
+  color: #ddfafe;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+
+  h2 {
+    color: #55aaf9;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  .popcorn-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #55aaf9;
+    margin-bottom: 15px;
+    background-color: #081562;
+    color: #ddfafe;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #a0d4f9;
+    }
+  }
+
+  .popcorn-btn {
+    background-color: #ddfafe;
+    color: #081562;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #55aaf9;
+      color: #ddfafe;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(85,170,249,0.5);
+    }
+  }
+
+  .popcorn-frame {
+    margin-top: 25px;
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #55aaf9;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #55aaf9;
+    font-size: 6rem;
+    font-weight: bold;
+    opacity: 0.6;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 0.6; }
+    25%, 75% { opacity: 1; }
+  }
+
+  .popcorn-result {
+    margin-top: 25px;
+    background-color: #0a1a75;
+    padding: 20px;
+    border-radius: 12px;
+    color: #ddfafe;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    animation: popIn 0.6s ease;
+
+    .emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 10px;
+      animation: bounce 1s infinite;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #55aaf9;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
