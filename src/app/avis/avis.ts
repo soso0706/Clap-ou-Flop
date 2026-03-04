@@ -27,14 +27,14 @@ export class AddReview {
   private readonly reviewApi = inject(ReviewApi);
   private readonly destroyRef = inject(DestroyRef);
 
-  movie?: Movie; // juste pour afficher le titre (optionnel)
+  movie?: Movie; // juste pour afficher le titre 
 
   review: Review = {
     rate: 5,
     text: '',
-    // ✅ user fixé en dur
+
     user: { id: 3 } as User,
-    // movie sera fixé dans ngOnInit
+
     movie: undefined,
   };
 
@@ -46,15 +46,13 @@ export class AddReview {
       return;
     }
 
-    // ✅ on set movie uniquement par id (recommandé avec Swagger)
     this.review.movie = { id: movieId } as Movie;
 
-    // (optionnel) on récupère le film juste pour afficher son titre
     this.moviesApi.getMovie(movieId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (m) => (this.movie = m),
-        error: () => { /* pas bloquant */ }
+        error: () => { }
       });
   }
 
@@ -68,7 +66,6 @@ export class AddReview {
       return;
     }
 
-    // ✅ garantit user id=3 (au cas où)
     this.review.user = { id: 3 } as User;
 
     this.reviewApi.addReview(this.review).subscribe({

@@ -49,6 +49,83 @@
           <h2>Synopsis</h2>
           <p class="synopsis">{{ m.synopsis }}</p>
         </div>
+
+         <div class="section reviews">
+
+          <div class="reviews-header">
+            <h2>Avis</h2>
+
+            <span class="reviews-count" *ngIf="!reviewsLoading && reviews.length">
+              {{ reviews.length }} avis
+            </span>
+          </div>
+
+          @if (reviewsLoading) {
+
+            <div class="loading-reviews">
+              <div class="spinner-border spinner-border-sm"></div>
+              <span>Chargement des avis…</span>
+            </div>
+
+          } @else if (reviews.length) {
+
+            <div class="reviews-list">
+
+              @for (r of reviews; track r.id) {
+
+                <article class="review-card">
+
+                  <div class="review-top">
+
+                    <div class="review-user">
+
+                      <div class="avatar">
+                        {{ (r.user?.firstName?.[0] ?? 'A') | uppercase }}
+                      </div>
+
+                      <div class="user-meta">
+
+                        <div class="user-name">
+                          {{ r.user?.firstName }} {{ r.user?.lastName }}
+                        </div>
+
+                        @if (r.reviewDate) {
+                          <div class="review-date">
+                            {{ r.reviewDate | date:'dd/MM/yyyy' }}
+                          </div>
+                        }
+
+                      </div>
+
+                    </div>
+
+                    <span class="badge review-rating">
+                      {{ r.rate }} / 5
+                    </span>
+
+                  </div>
+
+                  <p class="review-text">
+                    {{ r.text }}
+                  </p>
+
+                </article>
+
+              }
+
+            </div>
+
+          } @else {
+
+            <div class="empty-reviews">
+              <div class="empty-title">Aucun avis pour le moment</div>
+              <div class="empty-subtitle">Sois le premier à donner ton avis 👀</div>
+            </div>
+
+          }
+
+        </div>
+
       </div>
     </div>
   </div>
