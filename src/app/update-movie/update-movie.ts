@@ -44,6 +44,10 @@ export class UpdateMovie {
   }
 
   save(): void {
+    if (this.movie.rate === undefined || this.movie.rate === null) {
+    this.toastr.error('⚠️ La note est obligatoire !', 'Erreur');
+    return;
+  }
   this.moviesApi.updateMovie(this.movie).subscribe({
     next: () => {
       this.toastr.success('🎉 Film mis à jour avec succès ', 'Succès');

@@ -11,6 +11,7 @@ import { Contact } from './contact/contact';
 import { MiniGame } from './mini-game/mini-game';
 import { PopCornHoroscope } from './pop-corn-horoscope/pop-corn-horoscope';
 import { AddReview } from './avis/avis';
+import { AdminPanel } from './admin-panel/admin-panel';
 
 
 
@@ -27,5 +28,6 @@ export const routes: Routes = [
     { path: 'update-movie/:id', component: UpdateMovie},
     { path: 'connexion', component: Connexion},
     { path: 'inscription', component: Inscription},
-    { path: 'compte-user', component: CompteUser}
+    { path: 'compte-user', component: CompteUser},
+    { path: 'admin-panel', component: AdminPanel}
 ];
